@@ -1,7 +1,7 @@
 # WeTello
 DJI Tello control for Arduino Wemos
 
-# This code does not work yet!
+#### This code does not work yet!
 it should, but it doesn't. I'm still looking in to why.  
 I'm using the Wemos D1 mini to act as a wireless bridge from serial to tello.  
 The goal with this project is to control multiple Tello drones with very little hardware.

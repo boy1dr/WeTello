@@ -9,7 +9,9 @@ Ultimatly to control multiple Tello drones with very little hardware.
 
 Using the Arduino serial monitor you can use these numeric commands.
 1 takeoff
+
 2 land
+
 3 speed?
 4 battery?
 5 time?

@@ -8,6 +8,7 @@ I'm using the Wemos D1 mini to act as a wireless bridge from serial to tello.
 Ultimatly to control multiple Tello drones with very little hardware.
 
 Using the Arduino serial monitor you can use these numeric commands.
+
 1 takeoff
 
 2 land

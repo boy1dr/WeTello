@@ -1,8 +1,7 @@
 # WeTello
 DJI Tello control for Arduino Wemos
 
-### Code tested & working !
-it should, but it doesn't. I'm still looking in to why.  
+### Code tested & working !  
 I'm using the Wemos D1 mini to act as a wireless bridge from serial to tello.  
 The goal with this project is to control multiple Tello drones with very little hardware.
 
@@ -24,9 +23,9 @@ Tello SDK https://dl-cdn.ryzerobotics.com/downloads/tello/0228/Tello+SDK+Readme.
 Also included in this project is a script from ryzerobotics "Tello Python3 Control Demo" Tello3.py  
 This script works fine and controls the drone.
 
-i have pointed this python script at a linux box and used  
+i have pointed the Wemos & the python script at a linux box and used  
  netcat -ulp 8889  
-to see what it sends, and it sends the same as my arduino code does but the Tello remains on earth :(
+to see what it sends, and it sends the same as my arduino code :)
 
 More info on the SDK can be found here https://www.ryzerobotics.com/tello/downloads
 

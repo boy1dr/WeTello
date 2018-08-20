@@ -2,7 +2,6 @@
 /*
  * WeTello (Tello control for Arduino Wemos )
  * Chris Mitchell 19/08/2018
- * 
  */
  
 #include "ESP8266WiFi.h"
@@ -14,7 +13,7 @@ WiFiUDP UDP;
 #define MyTelloPASS ""
 #define tello_ip "192.168.10.1"
 #define portCmd 8889
-unsigned int localPort = 9000;
+unsigned int localPort = 8889;
 
 char packetBuffer[255]; 
 char incomingPacket[255];
@@ -50,21 +49,17 @@ void do_wifi(){
   Serial.println(WiFi.localIP());
   delay(500);
   UDP.begin(localPort);
-  delay(500);
+  delay(1000);
+  udpSend("command");
+  Serial.println("Waiting for commands");
 }
 
 void udpSend( char * msg ){
-  
   UDP.beginPacket(tello_ip, portCmd);
   Serial.print("TX: ");
   Serial.println(msg);
-  delay(100);
-  strcpy(packetBuffer,msg);
-  //UDP.write(msg);
-  UDP.write(packetBuffer,strlen(packetBuffer));
-  delay(100);
+  UDP.write(msg);
   UDP.endPacket();
-  delay(100);
 }
 
 void checkSerial(){
@@ -75,9 +70,12 @@ void checkSerial(){
     if(inByte==51){udpSend("speed?");}      //3
     if(inByte==52){udpSend("battery?");}    //4
     if(inByte==53){udpSend("Time?");}       //5
-    if(inByte==54){udpSend("cw 3600");}     //6
-    if(inByte==55){do_wifi();}              //7
-    if(inByte==56){printWiFiStatus();}      //8
+    if(inByte==54){udpSend("cw 360");}      //6
+
+    if(inByte==55){udpSend("up 20");}      //7
+    if(inByte==56){udpSend("right 20");}   //8
+    if(inByte==57){udpSend("down 20");}    //9
+    if(inByte==48){udpSend("left 20");}    //0
    }
 }
 
@@ -86,24 +84,9 @@ void checkPacket(){
   if (packetSize){
     Serial.printf("Received %d bytes from %s, port %d\n", packetSize, UDP.remoteIP().toString().c_str(), UDP.remotePort());
     int len = UDP.read(incomingPacket, 255);
-    if (len > 0)
-    {
+    if (len > 0){
       incomingPacket[len] = 0;
     }
     Serial.printf("UDP packet contents: %s\n", incomingPacket);
   }
 }
-
-void printWiFiStatus() {
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
-  IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
-  long rssi = WiFi.RSSI();
-  Serial.print("signal strength (RSSI):");
-  Serial.print(rssi);
-  Serial.println(" dBm");
-}
-
-

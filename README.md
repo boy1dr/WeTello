@@ -1,7 +1,7 @@
 # WeTello
 DJI Tello control for Arduino Wemos
 
-#### This code does not work yet!
+### Code tested & working !
 it should, but it doesn't. I'm still looking in to why.  
 I'm using the Wemos D1 mini to act as a wireless bridge from serial to tello.  
 The goal with this project is to control multiple Tello drones with very little hardware.
@@ -13,9 +13,11 @@ Using the Arduino serial monitor you can use these numeric commands.
 3 speed?  
 4 battery?  
 5 time?  
-6 clockwise 10 times  
-7 reconnect wifi  
-8 print wifi status  
+6 rotate clockwise 360deg  
+7 UP 20cm  
+8 RIGHT 20cm  
+9 DOWN 20cm  
+0 LEFT 20cm  
 
 
 Tello SDK https://dl-cdn.ryzerobotics.com/downloads/tello/0228/Tello+SDK+Readme.pdf  
